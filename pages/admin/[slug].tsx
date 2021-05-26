@@ -11,9 +11,9 @@ import AuthCheck from '../../components/AuthCheck';
 import styles from '../../styles/Admin.module.css';
 import ImageUploader from '../../components/ImageUploader';
 
-export default function AdminPostEdit(props) {
+export default function AdminPostEdit() {
   return (
-    <AuthCheck>
+    <AuthCheck fallback={null}>
       <PostManager />
     </AuthCheck>
   );
@@ -25,7 +25,7 @@ function PostManager() {
   const router = useRouter();
   const { slug } = router.query;
 
-  const postRef = firestore.collection('users').doc(auth.currentUser.uid).collection('posts').doc(slug);
+  const postRef = firestore.collection('users').doc(auth.currentUser.uid).collection('posts').doc(`${slug}`);
   const [post] = useDocumentDataOnce(postRef);
 
   return (

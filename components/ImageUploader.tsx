@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { auth, storage, STATE_CHANGED } from '../lib/firebase';
 import Loader from './Loader';
 
@@ -7,8 +7,8 @@ export default function ImageUploader() {
   const [progress, setProgress] = useState(0);
   const [downloadURL, setDownloadURL] = useState(null);
 
-  const uploadFile = async (e) => {
-    const file = Array.from(e.target.files)[0];
+  const uploadFile = async (e: any) => {
+    const file: any = Array.from(e.target.files)[0];
     const extension = file.type.split('/')[1];
 
     const ref = storage.ref(`uploads/${auth.currentUser.uid}/${Date.now()}.${extension}`);
@@ -18,7 +18,7 @@ export default function ImageUploader() {
 
     task.on(STATE_CHANGED, (snapshot) => {
       const pct = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(0);
-      setProgress(pct);
+      setProgress(Number.parseInt(pct, 2));
 
       // Get downloadURL AFTER task resolves (Note: this is not a native Promise)
       task

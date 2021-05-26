@@ -12,7 +12,7 @@ import { firestore, auth, serverTimestamp } from '../../lib/firebase';
 export default function AdminPostsPage() {
   return (
     <main>
-      <AuthCheck>
+      <AuthCheck fallback={null}>
         <PostList />
         <CreateNewPost />
       </AuthCheck>

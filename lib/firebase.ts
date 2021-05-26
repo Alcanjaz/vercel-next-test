@@ -5,13 +5,7 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBtNX7rvGE7LE2j3yQoHWZ1cNITiDXhLFg',
-  authDomain: 'firenext-8d6f0.firebaseapp.com',
-  projectId: 'firenext-8d6f0',
-  storageBucket: 'firenext-8d6f0.appspot.com',
-  messagingSenderId: '823337488947',
-  appId: '1:823337488947:web:aa61465a03c3389d478946',
-  measurementId: 'G-5XT5TCR9LH',
+  //Your firebase config
 };
 
 if (!firebase.apps.length) {
@@ -26,6 +20,7 @@ export const storage = firebase.storage();
 export const { STATE_CHANGED } = firebase.storage.TaskEvent;
 export const { fromMillis } = firebase.firestore.Timestamp;
 export const { serverTimestamp } = firebase.firestore.FieldValue;
+export const { increment } = firebase.firestore.FieldValue;
 
 /** `
  * Gets a users/{uid} document with username
